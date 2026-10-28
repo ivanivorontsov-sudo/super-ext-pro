@@ -1,0 +1,28 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Эмулятор устройств — Super Ext Pro</title><link rel="stylesheet" href="styles.css">
+<style>#stage{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding:16px}.dev{background:#111;border-radius:34px;padding:14px 10px;box-shadow:0 8px 30px #0007}.dev iframe{border:0;border-radius:20px;background:#fff;display:block}.dev p{color:#aaa;text-align:center;margin:6px 0 0;font-size:12px}
+table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}</style></head><body>
+<header><img src="icons/i48.png" alt=""><b>📱 Мобильный вид и Android</b></header>
+<nav><button data-t="m" class="on">Мобильный вид сайта</button><button data-t="a">Android в облаке / на ПК</button></nav>
+<section id="m" class="on"><div class="row card"><input id="url" class="grow"><select id="devs" multiple size="1" hidden></select>
+<label><input type="checkbox" class="d" value="0" checked> Android (Pixel 8)</label><label><input type="checkbox" class="d" value="1" checked> iPhone 15</label><label><input type="checkbox" class="d" value="2"> Galaxy S24</label><label><input type="checkbox" class="d" value="3"> Планшет</label>
+<button class="pri" id="go">Показать</button><button id="rot">⟲ Повернуть</button></div>
+<p class="mut">Сайт загружается в рамках с размерами экрана и мобильным User-Agent. Это эмуляция браузера телефона, а не Android: приложения из Play Маркета здесь не запускаются. Некоторые сайты (банки, Google-вход) намеренно не работают во фрейме.</p>
+<div id="stage"></div></section>
+<section id="a">
+<div class="card warn"><b>Честно:</b> полноценный Android с Google Play внутри расширения запустить невозможно — расширению недоступны виртуализация и ядро ОС. Любое «Android-расширение» на самом деле транслирует удалённый телефон/эмулятор с чужого сервера, и всё, что вы там вводите (включая пароль Google), проходит через этот сервер.</div>
+<div class="card"><h3>Облачные сервисы (запуск в браузере)</h3><table><tr><th>Сервис</th><th>Бесплатно</th><th>Google Play / вход Google</th><th>Оценка</th></tr>
+<tr><td><a target="_blank" href="https://developer.samsung.com/remote-test-lab">Samsung Remote Test Lab</a><br><span class="mut">Samsung, реальные Galaxy</span></td><td>Да, кредиты ежедневно (нужен Samsung Account)</td><td>Play есть на устройстве, вход нестабилен; устройство общее, сбрасывается после сеанса</td><td>✅ Официальный крупный вендор. Для проверки APK. Вход в основной Google-аккаунт не рекомендуется.</td></tr>
+<tr><td><a target="_blank" href="https://appetize.io/">Appetize.io</a></td><td>Да, ~30 мин/мес, сеансы по 3 мин</td><td>Нет — только загрузка своих APK</td><td>✅ Надёжная компания (GDPR, EU-облако). Play нет.</td></tr>
+<tr><td><a target="_blank" href="https://cloud.geny.io/">Genymotion SaaS</a></td><td>Пробные 60 мин по запросу; дальше платно (почасово)</td><td>Да — через встроенный «Install GApps», затем вход Gmail</td><td>✅ Известный разработчик эмуляторов (Genymobile, Франция). Единственный облачный вариант с полноценным Play; лучше с отдельным аккаунтом Google.</td></tr>
+<tr><td><a target="_blank" href="https://www.browserstack.com/app-live">BrowserStack App Live</a></td><td>Короткий триал, затем от ~$29/мес</td><td>Да — «Install via Play Store», данные стираются после сеанса</td><td>✅ Крупная компания, реальные устройства. Платно.</td></tr>
+<tr><td><a target="_blank" href="https://www.lambdatest.com/real-device-cloud">LambdaTest</a></td><td>Ограниченный бесплатный план</td><td>На реальных устройствах — есть Play</td><td>✅ Тестовый сервис, платный для серьёзной работы.</td></tr>
+<tr><td><a target="_blank" href="https://now.gg/">now.gg</a></td><td>Да (с рекламой)</td><td>Только отдельные игры/приложения из их каталога</td><td>⚠ Облачный гейминг, не эмулятор. Вход Google — со «странного устройства».</td></tr>
+<tr><td>ApkOnline / «Android Online Emulator» (расширение)</td><td>Да</td><td>Заявлен Play, Android 8</td><td>⛔ Не рекомендуется: по описанию самого расширения отправляет адреса всех посещённых страниц на свой сервер; рейтинг 2,9; аудит amibeingpwned — «высокий риск».</td></tr>
+<tr><td>«ARC Welder», MyAndroid и подобные</td><td>—</td><td>Нет</td><td>⛔ Оригинал Google снят; копии в магазине содержат рекламу/трекеры.</td></tr></table>
+<p class="mut">Доступность из России у зарубежных сервисов может быть ограничена (оплата картами РФ обычно невозможна). Совет: для облачных эмуляторов используйте отдельный Google-аккаунт и включите двухфакторную защиту.</p></div>
+<div class="card ok"><h3>Самый безопасный вариант — Android на своём компьютере</h3><ul>
+<li><a target="_blank" href="https://developer.android.com/studio">Android Studio Emulator</a> — официальный эмулятор Google; образы «Google Play» дают настоящий Play Маркет. Бесплатно, данные остаются на ПК.</li>
+<li><a target="_blank" href="https://play.google.com/googleplaygames">Google Play Игры для ПК</a> — официально от Google, но только игры.</li>
+<li><a target="_blank" href="https://www.bluestacks.com/">BlueStacks</a> — бесплатный, с Play Маркетом; есть реклама.</li>
+<li>Genymotion Desktop — бесплатен для личного использования, Play ставится кнопкой Open GApps.</li></ul></div>
+</section><script src="emulator.js"></script></body></html>

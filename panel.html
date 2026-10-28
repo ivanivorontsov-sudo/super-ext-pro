@@ -1,0 +1,31 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Super Ext Pro</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><img src="icons/i48.png" alt=""><b>Super Ext Pro</b><span class="grow"></span>
+<button id="openPanel" title="Открыть в боковой панели">⇥ Панель</button><a class="btn" href="options.html" target="_blank" title="Настройки">⚙</a></header>
+<nav><button data-t="dl" class="on">⬇ Загрузки</button><button data-t="shot">📸 Снимки</button><button data-t="page">💾 Страница</button><button data-t="tools">🧰 Инструменты</button><button data-t="tabs">🗂 Вкладки</button><a class="btn" id="proLink" href="pro.html" target="_blank">⭐ Pro</a></nav>
+<section id="dl" class="on">
+ <div class="row card"><button class="pri" id="scan">🔍 Найти на странице</button><span class="grow mut" id="scanInfo"></span>
+  <select id="filter"><option value="all">Все</option><option value="media">Видео/аудио</option><option value="images">Картинки</option><option value="docs">Документы</option><option value="tables">Таблицы</option></select></div>
+ <div id="ytNote" class="card warn" hidden></div>
+ <div id="jobs"></div><div id="list"></div>
+</section>
+<section id="shot"><div class="grid">
+ <button class="pri" data-c="shotVisible">Видимая часть</button><button data-c="shotFull">Вся страница</button>
+ <button data-c="shotRegion">Область</button></div>
+ <p class="mut">После снимка откроется редактор: стрелки, рамки, текст, маркер, размытие, обрезка; сохранение в PNG/JPEG или копирование.</p></section>
+<section id="page"><div class="grid">
+ <button class="pri" data-c="saveMHTML">MHTML (вся страница одним файлом)</button><button id="singleHtml">HTML (разметка)</button>
+ <button id="pdf">PDF (через печать)</button><button id="readText">Текст (.txt)</button></div>
+ <p class="mut">MHTML сохраняет картинки и стили внутри одного файла; открывается в Chrome/Edge.</p></section>
+<section id="tools">
+ <div class="card"><h3>📱 Мобильный вид и Android</h3><div class="row"><button class="pri" id="emu">Открыть эмулятор устройств</button></div>
+  <p class="mut">Показывает текущий сайт в рамках телефонов/планшетов с мобильным User-Agent, плюс проверенный список облачных Android.</p></div>
+ <div class="card"><h3>🔗 Чистая ссылка</h3><div class="row"><button id="clean">Скопировать адрес без трекеров (utm, fbclid, ysclid…)</button></div></div>
+ <div class="card"><h3>🔓 Разблокировать копирование и правый клик</h3><div class="row"><button id="unlock">На этой странице</button><button id="unlockAlways">Всегда на этом сайте</button></div></div>
+ <div class="card"><h3>🖼 Картинка в картинке</h3><button id="pip">Вынести видео в отдельное окно</button></div>
+ <div class="card"><h3>▶ YouTube</h3><p class="mut">Под видео появляется панель: 🔁 петля, отрезок A-B, скорость до 16×, лайки/дизлайки (Return YouTube Dislike).</p></div>
+ <div id="toolMsg" class="mut"></div></section>
+<section id="tabs">
+ <div class="row card"><button class="pri" id="saveTabs">Сохранить вкладки окна</button><button id="saveClose">Сохранить и закрыть</button>
+ <button id="exportJson">Экспорт JSON</button><button id="exportCsv">Экспорт CSV</button><label class="btn">Импорт<input type="file" id="import" accept=".json" hidden></label></div>
+ <div id="sessions"></div></section>
+<script src="lib/dl.js"></script><script src="panel.js"></script></body></html>

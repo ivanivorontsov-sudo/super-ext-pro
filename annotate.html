@@ -1,0 +1,8 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Скриншот — Super Ext Pro</title><link rel="stylesheet" href="styles.css">
+<style>body{display:flex;flex-direction:column;height:100vh}#bar{display:flex;gap:6px;padding:8px;border-bottom:1px solid var(--line);flex-wrap:wrap;align-items:center}#wrap{flex:1;overflow:auto;padding:12px;text-align:center}canvas{box-shadow:0 2px 20px #0006;max-width:100%;cursor:crosshair}</style></head><body>
+<div id="bar"><b>📸</b>
+<button data-t="arrow" class="pri">➜ Стрелка</button><button data-t="rect">▭ Рамка</button><button data-t="pen">✎ Карандаш</button><button data-t="mark">▌Маркер</button><button data-t="text">T Текст</button><button data-t="blur">▦ Размыть</button><button data-t="crop">⌗ Обрезать</button>
+<input type="color" id="col" value="#ef4444"><select id="w"><option>2</option><option selected>4</option><option>8</option></select>
+<button id="undo">↶ Отменить</button><span class="grow"></span><button id="copy">Копировать</button><button id="jpg">JPEG</button><button id="png" class="pri">Сохранить PNG</button></div>
+<div id="wrap"><canvas id="c"></canvas><p id="msg" class="mut"></p></div>
+<script src="annotate.js"></script></body></html>

@@ -1,0 +1,8 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Настройки — Super Ext Pro</title><link rel="stylesheet" href="styles.css"></head><body style="max-width:640px;margin:auto">
+<header><img src="icons/i48.png" alt=""><b>Настройки Super Ext Pro</b></header><section class="on">
+<div class="card"><label>Потоков при загрузке: <input type="number" id="threads" min="1" max="16" style="width:70px"></label><p class="mut">Больше потоков — быстрее на серверах с поддержкой Range, но некоторые сайты ограничивают число соединений. Рекомендуется 4–8.</p></div>
+<div class="card"><label><input type="checkbox" id="ytControls"> Панель YouTube (петля, A-B, скорость)</label><br><label><input type="checkbox" id="ryd"> Показывать дизлайки (запрос ID видео к returnyoutubedislikeapi.com)</label></div>
+<div class="card"><h3>Сайты с разблокированным копированием</h3><textarea id="unlockSites" rows="4" style="width:100%" placeholder="по одному домену в строке"></textarea></div>
+<div class="card ok"><h3>Приватность</h3><p>Нет телеметрии, аналитики и рекламы. Данные (сессии вкладок, настройки) хранятся только в браузере. Единственный внешний сервис — Return YouTube Dislike (получает только ID открытого видео); его можно отключить выше.</p></div>
+<button class="pri" id="save">Сохранить</button> <span id="ok" class="mut"></span></section>
+<script src="options.js"></script></body></html>

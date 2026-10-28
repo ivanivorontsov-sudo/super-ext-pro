@@ -1,0 +1,6 @@
+#sa-yt{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0;font:13px Roboto,Arial,sans-serif;color:var(--yt-spec-text-primary,#0f0f0f)}
+#sa-yt button,#sa-yt select{background:var(--yt-spec-badge-chip-background,#eee);color:inherit;border:0;border-radius:16px;padding:6px 12px;cursor:pointer;font:inherit}
+#sa-yt button.on{background:#6366f1;color:#fff}
+#sa-yt .sa-dis{padding:6px 12px;border-radius:16px;background:var(--yt-spec-badge-chip-background,#eee)}
+#sa-yt .sa-bar{width:120px;height:4px;background:#ccc;border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:6px}
+#sa-yt .sa-bar i{display:block;height:100%;background:#3ea6ff}

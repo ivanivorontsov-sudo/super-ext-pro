@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Super Ext Pro</title><link rel="stylesheet" href="styles.css">
+<style>body{max-width:980px;margin:auto}textarea{width:100%;min-height:70px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}#tabList .item{font-size:12px}canvas,img.prev{max-width:100%}.sw{display:inline-block;width:22px;height:22px;border-radius:4px;border:1px solid var(--line);vertical-align:middle}</style></head><body>
+<header><img src="icons/i48.png" alt=""><b>Super Ext Pro</b><span class="grow"></span><span class="mut">Цель: <span id="target">—</span></span><button id="refreshTarget">↻</button></header>
+<nav><button data-t="ptabs" class="on">🗂 Вкладки</button><button data-t="ppage">🌓 Страница</button><button data-t="pmedia">🎞 Медиа</button><button data-t="ptools">🧰 Инструменты</button><button data-t="pblock">🛡 Блокировка</button><button data-t="pnotes">📝 Заметки</button></nav>
+
+<section id="ptabs" class="on">
+ <div class="card"><h3>Менеджер вкладок</h3><div class="row"><input id="tabSearch" class="grow" placeholder="Поиск по заголовку и адресу"><button id="dupes">Закрыть дубликаты</button><button id="groupDomain">Группировать по сайтам</button><button id="sortDomain">Сортировать по сайтам</button><button id="tabsCsv">CSV</button></div>
+ <div id="tabList"></div></div>
+ <div class="card"><h3>💤 Заморозка вкладок</h3><div class="row"><button class="pri" id="suspendNow">Заморозить все фоновые сейчас</button>
+  <label>Авто через <input id="suspendMin" type="number" min="0" style="width:60px"> мин (0 — выкл)</label><input id="suspendWl" class="grow" placeholder="Исключения: example.com, mail.ru"><button id="saveSuspend">Сохранить</button></div>
+  <p class="mut">Используется встроенная выгрузка Chrome (tabs.discard): вкладка остаётся на месте, память освобождается. Не трогает активные, закреплённые и играющие звук вкладки.</p><div id="suspendMsg" class="mut"></div></div>
+ <div class="card"><h3>Правила групп</h3><div class="row"><input id="grPat" placeholder="домен или часть адреса"><input id="grName" placeholder="название группы"><select id="grColor"><option>blue</option><option>red</option><option>green</option><option>yellow</option><option>purple</option><option>cyan</option><option>orange</option><option>pink</option><option>grey</option></select><button id="grAdd">Добавить</button><button id="grApply">Применить сейчас</button></div><div id="grList"></div></div>
+ <div class="card"><h3>⏳ Временные закладки</h3><div class="row"><select id="tmpDays"><option value="1">1 день</option><option value="7" selected>7 дней</option><option value="30">30 дней</option></select><button id="tmpAdd">Добавить текущую вкладку</button></div><div id="tmpList"></div><p class="mut">Удаляются сами по истечении срока. Также есть пункт в контекстном меню.</p></div>
+ <div class="card"><h3>Автосохранение сессий</h3><div class="row"><label><input type="checkbox" id="autosave" checked> каждые 30 минут (последние 10)</label><button id="autosaveNow">Сохранить сейчас</button></div><div id="autoList"></div></div>
+</section>
+
+<section id="ppage">
+ <div class="grid3"><button class="pri" id="darkOn">🌙 Тёмная тема на этом сайте</button><button id="darkOff">☀ Выключить</button><button id="reader">📖 Режим чтения</button>
+ <button id="ruler">📏 Линейка</button><button id="archiveSave">🏛 Сохранить в archive.org</button><button id="archiveView">🏛 Снимки archive.org</button></div>
+ <div class="card"><h3>⏱ Автообновление</h3><div class="row"><input id="refSec" type="number" min="0" value="60" style="width:80px"> сек <button id="refOn">Включить</button><button id="refOff">Выключить</button><span id="refMsg" class="mut"></span></div></div>
+ <div class="card"><h3>▶ Скорость видео на любом сайте</h3><div class="row"><input id="spd" type="range" min="0.25" max="16" step="0.25" value="1" class="grow"><b id="spdV">1×</b><button id="pip2">🖼 PiP</button></div><p class="mut">Горячие клавиши на странице: Shift+. быстрее, Shift+, медленнее, Shift+0 сброс.</p></div>
+ <div class="card"><h3>🎨 Свой CSS / JS для сайта</h3><div class="row"><input id="ucSite" placeholder="домен или *"><button id="ucSave">Сохранить и применить</button><button id="ucDel">Удалить</button></div>
+  <textarea id="ucCss" placeholder="CSS, например: body{font-size:18px}"></textarea><textarea id="ucJs" placeholder="JavaScript (выполняется на странице; сайты со строгим CSP могут запретить)"></textarea><div id="ucList" class="mut"></div></div>
+ <div class="card"><h3>🍪 Куки и хранилище</h3><div class="row"><button id="ckLoad">Показать</button><button id="ckExport">Экспорт JSON</button></div><div id="ckList"></div></div>
+</section>
+
+<section id="pmedia">
+ <div class="card"><h3>HLS (.m3u8) → MP4</h3><div class="row"><input id="hlsUrl" class="grow" placeholder="Адрес .m3u8 (найденные — во вкладке «Загрузки» основной панели)"><button class="pri" id="hlsGo">Скачать как MP4</button></div><progress id="hlsProg" value="0" max="1"></progress><div id="hlsMsg" class="mut"></div>
+ <p class="mut">Сегменты качаются параллельно, AES-128 расшифровывается, затем поток перепаковывается в MP4 (mux.js) прямо в браузере. DRM (Widevine/SAMPLE-AES) не обходится.</p></div>
+ <div class="card"><h3>Очередь загрузок</h3><textarea id="qUrls" placeholder="По одной ссылке на строку"></textarea><div class="row"><label>Одновременно <input id="qPar" type="number" value="2" min="1" max="6" style="width:50px"></label><button class="pri" id="qGo">Запустить</button></div><div id="qList"></div></div>
+</section>
+
+<section id="ptools">
+ <div class="card"><h3>🔤 Распознать текст (OCR, офлайн)</h3><div class="row"><button class="pri" id="ocrShot">С видимой части вкладки</button><label class="btn">Из файла<input type="file" id="ocrFile" accept="image/*" hidden></label><select id="ocrLang"><option value="rus+eng">рус+англ</option><option value="eng">англ</option><option value="rus">рус</option></select></div>
+  <progress id="ocrProg" value="0" max="1"></progress><textarea id="ocrOut" placeholder="Результат"></textarea><button id="ocrCopy">Копировать</button></div>
+ <div class="card"><h3>▦ QR-коды</h3><div class="row"><input id="qrText" class="grow" placeholder="Текст или адрес (по умолчанию — адрес вкладки)"><button id="qrMake">Создать</button><button id="qrScan">Найти QR на вкладке</button><label class="btn">QR из файла<input type="file" id="qrFile" accept="image/*" hidden></label></div><div id="qrOut"></div><div id="qrRead" class="mut"></div></div>
+ <div class="card"><h3>💧 Пипетка</h3><div class="row"><button id="eyedrop">Выбрать цвет на экране</button><button id="pickShot">Пипетка по снимку вкладки</button><span id="color"></span></div><canvas id="pickCv" hidden></canvas></div>
+ <div class="card"><h3>🌐 Перевод</h3><p class="mut">Выделите текст на странице → правый клик → «Перевести». Язык: <select id="lang"><option value="ru">русский</option><option value="en">английский</option><option value="de">немецкий</option><option value="zh-CN">китайский</option></select></p></div>
+</section>
+
+<section id="pblock">
+ <div class="card"><h3>🛡 Блокировка рекламы и трекеров</h3><div class="row"><label><input type="checkbox" id="adsOn"> Включено</label><span id="adsMsg" class="mut"></span><button id="adsStat">Что заблокировано на вкладке</button></div>
+ <p class="mut">Встроенный список (~50 рекламных и трекинговых доменов, включая Яндекс.Метрику, Google Analytics, Criteo, Taboola) через declarativeNetRequest — быстро и без чтения ваших страниц. Для полной фильтрации рекомендуем uBlock Origin Lite вместе с этим расширением.</p><div id="adsList" class="mut"></div></div>
+</section>
+
+<section id="pnotes">
+ <div class="card"><h3>Заметки к сайту <span id="noteHost" class="mut"></span></h3><textarea id="note" style="min-height:160px"></textarea><div class="row"><button id="noteSave" class="pri">Сохранить</button><button id="notesExport">Экспорт всех (.md)</button><span id="noteMsg" class="mut"></span></div></div>
+ <div id="notesAll"></div>
+</section>
+<script src="lib/dl.js"></script><script src="lib/mux.min.js"></script><script src="lib/jsQR.js"></script><script src="lib/qrcode.js"></script><script src="lib/tess/tesseract.min.js"></script><script src="pro.js"></script></body></html>
