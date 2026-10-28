@@ -1,3 +1,4 @@
+importScripts('vt/bg.js');
 importScripts("pro-bg.js");
 // Super Ext Pro — фоновый сервис. Никакой телеметрии: сетевые запросы только к сайтам, которые вы открыли, и к returnyoutubedislikeapi.com.
 const media = {}; // tabId -> Map(url -> info)
@@ -111,6 +112,7 @@ async function startRegion(tabId) {
 }
 
 chrome.runtime.onMessage.addListener((msg, sender, reply) => {
+  if (msg.cmd?.startsWith('vt.')) return;
   if (msg.cmd?.startsWith('pro.')) return;
   (async () => {
     const tab = msg.tabId ? await chrome.tabs.get(msg.tabId) : sender.tab;
